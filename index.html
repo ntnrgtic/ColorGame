@@ -68,6 +68,7 @@
         else correctColor = t6.style.background;
         /*console.log(x);
         console.log(correctColor); */
+        document.getElementById("header").style.background = "yellowgreen";
         document.getElementById("infobar").innerHTML = "Click on the tile you guess to be the correct color.";
         document.getElementById("trycount").innerHTML = 4;
         document.getElementById("header-clue").innerHTML = correctColor;
@@ -84,7 +85,7 @@
         t6.style.background = correctColor;
         document.getElementById("header").style.background = correctColor;
         document.getElementById("infobar").innerHTML = "BIMNGO! you got it right";
-        document.getElementById("infobar").style.color = correctColor;
+        document.getElementById("infobar").style.color = "green";
         document.getElementById("infobar").style.fontWeight = "bold" ;
         document.getElementById("ifuwin").style.zIndex = 0;
       }
