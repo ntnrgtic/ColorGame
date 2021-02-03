@@ -6,23 +6,42 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body onload="newGame()">
+   
     <div id="header">
-      <h2>The Great</h2>
+      <h2>The hexadecimal color</h2>
       <h1 id="header-clue">rgb(xxx,xxx,xxx)</h1>
       <h2>Guessing Game</h2>
     </div>
-    <div id="container">
-      <div class="tile" id="1"></div>
-      <div class="tile" id="2"></div>
-    </div>
-
+    
+      <div id="container">
+        <button onclick="newGame()" class="floater">NEW GAME</button>
+        <div class="floater" id="counter">
+          Number of Tries left - <span id="trycount">4</span>/
+          <span id="totalTries">4</span>
+        </div>
+        <img id="ifuwin" src="doge thumbs up.jpg" alt="NO DOG">
+        <div id="infobar" class="bottomOfPg">Click on the tile you guess to be the correct color.</div>
+        <div class="tile" id="1"></div>
+        <div class="tile" id="2"></div>
+        <div class="tile" id="3"></div>
+        <div class="tile" id="4"></div>
+        <div class="tile" id="5"></div>
+        <div class="tile" id="6"></div>
+      </div>
+   
     <script>
+      
       var t1 = document.getElementById("1");
       var t2 = document.getElementById("2");
+      var t3 = document.getElementById("3");
+      var t4 = document.getElementById("4");
+      var t5 = document.getElementById("5");
+      var t6 = document.getElementById("6");
       var x;
       var correctColor;
+     
 
-      function getRandomColor() {
+      function getRandomColor() { 
         var letters = "0123456789ABCDEF";
         var color = "#";
         for (var i = 0; i < 6; i++) {
@@ -34,34 +53,130 @@
       function newGame() {
         t1.style.background = getRandomColor();
         t2.style.background = getRandomColor();
-
-        x = Math.floor(Math.random() * 2 + 1);
+        t3.style.background = getRandomColor();
+        t4.style.background = getRandomColor();
+        t5.style.background = getRandomColor();
+        t6.style.background = getRandomColor();
+                      
+        x = Math.floor(Math.random() * 6 + 1);
 
         if (x == 1) correctColor = t1.style.background;
-        else correctColor = t2.style.background;
-        /* console.log(x);
+        else if (x==2) correctColor = t2.style.background;
+        else if (x==3) correctColor = t3.style.background;
+        else if (x==4) correctColor = t4.style.background;
+        else if (x==5) correctColor = t5.style.background;
+        else correctColor = t6.style.background;
+        /*console.log(x);
         console.log(correctColor); */
-
+        document.getElementById("infobar").innerHTML = "Click on the tile you guess to be the correct color.";
+        document.getElementById("trycount").innerHTML = 4;
         document.getElementById("header-clue").innerHTML = correctColor;
+        document.getElementById("infobar").style.color = "white";
+        document.getElementById("infobar").style.fontWeight = "initial";
+        document.getElementById("ifuwin").style.zIndex = -1;
+      }
+      function colorAll(){
+        t1.style.background = correctColor;
+        t2.style.background = correctColor;
+        t3.style.background = correctColor;
+        t4.style.background = correctColor;
+        t5.style.background = correctColor;
+        t6.style.background = correctColor;
+        document.getElementById("header").style.background = correctColor;
+        document.getElementById("infobar").innerHTML = "BIMNGO! you got it right";
+        document.getElementById("infobar").style.color = correctColor;
+        document.getElementById("infobar").style.fontWeight = "bold" ;
+        document.getElementById("ifuwin").style.zIndex = 0;
+      }
+      function incCount(){
+        if( document.getElementById("trycount").innerHTML==0){
+          t1.style.background = "black";
+          t2.style.background = "black";
+          t3.style.background = "black";
+          t4.style.background = "black";
+          t5.style.background = "black";
+          t6.style.background = "black";
+          document.getElementById("infobar").innerHTML = "You ran out of tries!";
+          document.getElementById("infobar").style.color = "red";
+          document.getElementById("infobar").style.fontWeight = "bold" ;
+        }
       }
 
+
+      {// event listeners for all tiles
       t1.addEventListener("click", function () {
+        
         if (t1.style.background == correctColor) {
-          t2.style.background = correctColor;
-          document.getElementById("header").style.background = correctColor;
+          colorAll();
         } else {
+          if(t1.style.background != "black"){ 
+          document.getElementById("trycount").innerHTML--;
+        }
+          incCount();
           t1.style.background = "black";
         }
       });
-
       t2.addEventListener("click", function () {
+        
         if (t2.style.background == correctColor) {
-          t1.style.background = correctColor;
-          document.getElementById("header").style.background = correctColor;
+          colorAll();
         } else {
+          if(t2.style.background != "black"){ 
+          document.getElementById("trycount").innerHTML--;
+        }
+          incCount();
           t2.style.background = "black";
         }
       });
+      t3.addEventListener("click", function () {
+        
+        if (t3.style.background == correctColor) {
+          colorAll();
+        } else {
+          if(t3.style.background != "black"){ 
+          document.getElementById("trycount").innerHTML--;
+        }
+          incCount();
+          t3.style.background = "black";
+        }
+      });
+      t4.addEventListener("click", function () {
+        
+        if (t4.style.background == correctColor) {
+          colorAll();
+        } else {
+          if(t4.style.background != "black"){ 
+          document.getElementById("trycount").innerHTML--;
+        }
+          incCount();
+          t4.style.background = "black";
+        }
+      });
+      t5.addEventListener("click", function () {
+        
+        if (t5.style.background == correctColor) {
+          colorAll();
+        } else {
+          if(t5.style.background != "black"){ 
+          document.getElementById("trycount").innerHTML--;
+        }
+          incCount();
+          t5.style.background = "black";
+        }
+      });
+      t6.addEventListener("click", function () {
+        
+        if (t6.style.background == correctColor) {
+          colorAll();
+        } else {
+          if(t6.style.background != "black"){ 
+          document.getElementById("trycount").innerHTML--;
+        }
+          incCount();
+          t6.style.background = "black";
+        }
+      });
+    }
     </script>
   </body>
 </html>

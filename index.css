@@ -4,24 +4,73 @@
 }
 
 #header {
-  background-color: lightpink;
-  height: 30vh;
+  background-color: rgb(30, 240, 75);
+  height: 20vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
+  
+}
+#ifuwin{
+  height: 70%;
+  position:absolute;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  z-index: -1;
+}
+.bottomOfPg{
+  position: absolute;
+  height: 2em;
+  display: inline;
+  color: white;
+  font-size: 2em;
+  bottom: 0%;
+  right:1%;
+  left: 1%;
+  text-align: center;
+  z-index: 0;
+}
+.floater{
+  /* display: inline; */
+  position: absolute; 
+  right: 1%;
+  top: 2%;
+  height: 2em;
+  z-index: 1;
+  /* display: inline-block; */
 }
 
+#counter{
+  display: inline;
+  color: white;
+  /* border: white 2px solid; */
+  left: 1%;
+  font-size: 1.5em;
+  text-align: center;
+  z-index: 0;
+}
+
+#trycount{
+  font-size: 2em;
+}
 #container {
+  position: relative;
   background-color: black;
-  height: 70vh;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 5mm;
+  align-content: center;
+  justify-content: center;
+  
 }
 
 .tile {
   height: 200px;
   width: 200px;
-  background-color: aliceblue;
+  background-color: greenyellow;
+  /* margin: 100px; */
 }
